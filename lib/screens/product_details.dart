@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flux_cart/product_detail_widgets/similar_products.dart';
 import 'package:flux_cart/products_list.dart';
 import 'package:flux_cart/product_detail_widgets/drop_down_button.dart';
 import 'package:flux_cart/constants.dart';
@@ -26,10 +27,14 @@ class _ProductDetailsState extends State<ProductDetails> {
     widget.imageDetailList.add(widget.picture);
 
     return Scaffold(
+
       appBar: AppBar(
         elevation: 20.0,
         //backgroundColor: Colors.cyanAccent,
-        title: Text('Details'),
+        title: InkWell(child: Text('Details'),
+        onTap: (){
+          Navigator.pop(context);
+        },),
         actions: <Widget>[
           IconButton(
             onPressed: () {},
@@ -137,16 +142,19 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
           ),
-          ListTile(
-            title: new Text('Product Description',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),
-            subtitle: Text(lorem(paragraphs: 2, words: 200)),
+          Container(
+            decoration:const BoxDecoration(color: Colors.white,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8),bottomRight: Radius.circular(8))),
+            child: ListTile(
+              title: new Text('Product Description',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),
+              subtitle: Text(lorem(paragraphs: 2, words: 200)),
+            ),
           ),
           Row(
             children: <Widget>[
               Padding(padding: EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
-              child:  Text('Product Nme',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),),
+              child:  Text('Product Name',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),),
               Padding(padding: EdgeInsets.all(5.0),
-              child: Text(widget.name),)
+              child: Text(widget.name,style: TextStyle(color: Colors.grey),),)
             ],
           ),
           //ToDo: Complete Product Brand
@@ -162,6 +170,13 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(padding: EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
                 child:  Text('Product Condition',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),)
             ],
+          ),
+
+          //  Similar products
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8),bottomRight: Radius.circular(8))),
+            height: 360.0,
+            child: SimilarProducts(),
           )
         ],
       ),

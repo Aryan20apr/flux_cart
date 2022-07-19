@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flux_cart/screens/product_details.dart';
 import 'package:flux_cart/products_list.dart';
-class Products extends StatefulWidget {
-  const Products({Key? key}) : super(key: key);
+class SimilarProducts extends StatefulWidget {
+  const SimilarProducts({Key? key}) : super(key: key);
 
   @override
-  State<Products> createState() => _ProductsState();
+  State<SimilarProducts> createState() => _SimilarProductsState();
 }
 
-class _ProductsState extends State<Products> {
+class _SimilarProductsState extends State<SimilarProducts> {
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: product_list.length,
         itemBuilder: (BuildContext context, int index) {
           return Single_product(index: index,
@@ -46,7 +46,7 @@ class Single_product extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: ()=>
-              Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>ProductDetails(index: index))),//Pass the index of current product
+                  Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>ProductDetails(index: index))),//Pass the index of current product
               child: GridTile(
                   child: Image.asset(
                     picture,
@@ -55,24 +55,24 @@ class Single_product extends StatelessWidget {
                   footer: Container(
                     color: Colors.white70,
                     child: ListTile(
-                      visualDensity: VisualDensity.adaptivePlatformDensity,
+                      visualDensity: VisualDensity.compact,
                       leading: Text(
                         name,
                         style: TextStyle(color: Colors.black),
                       ),
-                      trailing: Text(
+                     trailing: Text(
                         '\$$price',
                         style: const TextStyle(
                             color: Colors.blueAccent,
                             fontWeight: FontWeight.bold),
                       ),
-                      // title: Text(
-                      //   '\$$oldPrice',
-                      //   style: const TextStyle(
-                      //       color: Colors.black54,
-                      //       fontWeight: FontWeight.bold,
-                      //       decoration: TextDecoration.lineThrough),
-                      // ),
+                     // title: Text(
+                     //    '\$$oldPrice',
+                     //    style: const TextStyle(
+                     //        color: Colors.black54,
+                     //        fontWeight: FontWeight.bold,
+                     //        decoration: TextDecoration.lineThrough),
+                     //  ),
                     ),
                   )),
             ),
