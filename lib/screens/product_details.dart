@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flux_cart/products_list.dart';
-
+import 'package:flux_cart/product_detail_widgets/drop_down_button.dart';
+import 'package:flux_cart/constants.dart';
+import 'package:flutter_lorem/flutter_lorem.dart';
 class ProductDetails extends StatefulWidget {
   static String id = 'product_details';
   ProductDetails({Key? key, required this.index}) : super(key: key);
@@ -110,22 +112,57 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
               )),
-          Row(
-            children: const <Widget>[
-              SizeDropDown(),
-              ColorPalette(),
-              Quantity(),
-            ],
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8),bottomRight: Radius.circular(8))),
+            child: Row(
+              children: [
+                Expanded(flex: 1,child: DropDownButton(dropdownValue: null, itemsList: sizeList, hintText: 'Select Size')),
+                Expanded(flex:1,child: DropDownButton(dropdownValue: null, itemsList: colors, hintText: 'Select Color')),
+                Expanded(flex:1,child: DropDownButton(dropdownValue: null, itemsList: quantity, hintText: 'Select Quantity'))
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Expanded(child: BuyButton()),
-              IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border_rounded),color: Colors.red,),
-              IconButton(onPressed: (){}, icon: Icon(Icons.add_shopping_cart),color: Colors.red,)
-            ],
 
+          Container(
+            decoration: BoxDecoration(color:Colors.white54,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20))),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(child: BuyButton()),
+                  IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border_rounded),color: Colors.red,),
+                  IconButton(onPressed: (){}, icon: Icon(Icons.add_shopping_cart),color: Colors.red,)
+                ],
+
+              ),
+            ),
           ),
-         
+          ListTile(
+            title: new Text('Product Description',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),
+            subtitle: Text(lorem(paragraphs: 2, words: 200)),
+          ),
+          Row(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+              child:  Text('Product Nme',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),),
+              Padding(padding: EdgeInsets.all(5.0),
+              child: Text(widget.name),)
+            ],
+          ),
+          //ToDo: Complete Product Brand
+          Row(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+                child:  Text('Product Brand',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),)
+            ],
+          ),
+          //ToDo: Complete Product Condition
+          Row(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
+                child:  Text('Product Condition',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w700),),)
+            ],
+          )
         ],
       ),
     );
@@ -144,6 +181,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   }
 }
 
+/*
 class SizeDropDown extends StatefulWidget {
   const SizeDropDown({
     Key? key,
@@ -243,7 +281,7 @@ class _QuantityState extends State<Quantity> {
       ),
     );
   }
-}
+}*/
 
 class BuyButton extends StatelessWidget {
   const BuyButton({Key? key}) : super(key: key);
@@ -268,3 +306,4 @@ class BuyButton extends StatelessWidget {
     );
   }
 }
+
