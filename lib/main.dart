@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flux_cart/screens/product_details.dart';
 import 'screens/home_screen.dart';
+import 'package:flutter/services.dart';
 void main() {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final ThemeData theme = ThemeData();
   runApp( MaterialApp(
     theme: theme.copyWith(
@@ -19,7 +25,11 @@ void main() {
     ),
 
     debugShowCheckedModeBanner: false, //Hides the debug banner in top right
-    home: HomePage(),
+    initialRoute: HomePage.id,
+    routes: {
+      HomePage.id:(context)=>const HomePage(),
+      ProductDetails.id:(context)=> ProductDetails(index: 0,),
+  },
   ));
 }
 

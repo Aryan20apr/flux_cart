@@ -4,12 +4,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flux_cart/constants.dart';
 import 'package:flux_cart/widgetComponents/horizontal_list_view.dart';
+import 'package:flux_cart/widgetComponents/products.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
+  static String id='home_screen';
   @override
   State<HomePage> createState() => _HomePageState();
 }
+
 
 List<String> imgList = [
   ('images/c1.jpg'),
@@ -21,9 +23,9 @@ List<String> imgList = [
 ];
 
 class _HomePageState extends State<HomePage> {
-  int activeIndex=0;
+  int activeIndex = 0;
 
-  var controller=CarouselController();
+  var controller = CarouselController();
   @override
   Widget build(BuildContext context) {
     /*Widget image_coursel = Container(
@@ -117,64 +119,77 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: ListView(
-        children: <Widget>[Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            buildCarousel(),
-            SizedBox(
-              height: 10.0,
-            ),
-            buildSlidingIndicator(activeIndex),
-            const Padding(padding: EdgeInsets.all(8.0),
-            child: kCategoryText,),
-            HorizontalList(),
-          ],
-        )],
+        children: <Widget>[
+          buildCarousel(),
+          /*SizedBox(
+          height: 10.0,
+        ),*/
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Center(child: buildSlidingIndicator(activeIndex)),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: kCategoryText,
+          ),
+          //Horizontal List View
+          HorizontalList(),
+
+          //Grid View
+          Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: kRecent,
+          ),
+          Container(
+            height: 320.0,
+            child: Products(),
+          ),
+          Center(child: const Text('End of List',style: TextStyle(color: Colors.grey,decoration:TextDecoration.overline )))
+        ],
       ),
     );
   }
 
   Widget buildImage(String imagePath, int index) {
     return Container(
-     // margin: EdgeInsets.symmetric(horizontal: 1.0),
+      // margin: EdgeInsets.symmetric(horizontal: 1.0),
       height: 200,
       color: Colors.grey,
-      child: Image.asset(imagePath,
-      fit: BoxFit.cover,),
+      child: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      ),
     );
   }
-  Widget buildSlidingIndicator(int activeIndex)=>AnimatedSmoothIndicator(activeIndex: activeIndex, count:imgList.length,
 
-    effect: SlideEffect(
-      dotWidth: 10,
-    dotHeight: 10,
-    activeDotColor: Colors.greenAccent,
-      dotColor: Colors.grey
-  ),
-  onDotClicked: (index)=>controller.animateToPage(index),);
+  Widget buildSlidingIndicator(int activeIndex) => AnimatedSmoothIndicator(
+        activeIndex: activeIndex,
+        count: imgList.length,
+        effect: SlideEffect(
+            dotWidth: 10,
+            dotHeight: 10,
+            activeDotColor: Colors.greenAccent,
+            dotColor: Colors.grey),
+        onDotClicked: (index) => controller.animateToPage(index),
+      );
 
-Widget buildCarousel()
-{
-return CarouselSlider.builder(itemCount: imgList.length,
-    carouselController: controller,
-    itemBuilder: (context,index,realIndex)
-    {
-      final imagePath=imgList[index];
-      return buildImage(imagePath,index);
-    },
-
-    options: CarouselOptions(
-        viewportFraction: 1,
-       // pageSnapping: false,//If false scroll every pixel manually
-        autoPlayCurve: Curves.decelerate,
-        autoPlay: true,
-        enlargeCenterPage: true,
-        enlargeStrategy: CenterPageEnlargeStrategy.scale,
-        autoPlayInterval: Duration(seconds: 8),
-        onPageChanged: (index,reason)=>
-            setState(()=>activeIndex=index)));
-
+  Widget buildCarousel() {
+    return CarouselSlider.builder(
+        itemCount: imgList.length,
+        carouselController: controller,
+        itemBuilder: (context, index, realIndex) {
+          final imagePath = imgList[index];
+          return buildImage(imagePath, index);
+        },
+        options: CarouselOptions(
+            viewportFraction: 1,
+            // pageSnapping: false,//If false scroll every pixel manually
+            autoPlayCurve: Curves.decelerate,
+            autoPlay: true,
+            enlargeCenterPage: true,
+            enlargeStrategy: CenterPageEnlargeStrategy.scale,
+            autoPlayInterval: Duration(seconds: 8),
+            onPageChanged: (index, reason) =>
+                setState(() => activeIndex = index)));
+  }
 }
-}
-
