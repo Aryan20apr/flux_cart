@@ -5,6 +5,7 @@ import 'package:flux_cart/products_list.dart';
 import 'package:flux_cart/product_detail_widgets/drop_down_button.dart';
 import 'package:flux_cart/constants.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
+import 'package:flux_cart/screens/shopping_cart.dart';
 class ProductDetails extends StatefulWidget {
   static String id = 'product_details';
   ProductDetails({Key? key, required this.index}) : super(key: key);
@@ -42,7 +43,10 @@ class _ProductDetailsState extends State<ProductDetails> {
             // color: Colors.white,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //Navigator.push(context, MaterialPageRoute(builder:(context)=>Cart()))
+              Navigator.pushNamed(context, Cart.id);
+            },
             icon: Icon(Icons.shopping_cart),
             // color: Colors.white,
           )

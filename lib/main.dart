@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flux_cart/screens/product_details.dart';
 import 'screens/home_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:flux_cart/screens/shopping_cart.dart';
 void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,9 +29,11 @@ void main() {
     initialRoute: HomePage.id,
     routes: {
       HomePage.id:(context)=>const HomePage(),
-      ProductDetails.id:(context)=> ProductDetails(index: 0,),
+      //ProductDetails.id:(context)=> ProductDetails(),
+      Cart.id:(context)=>Cart()
   },
-  ));
+  ),
+  );
 }
 
 

@@ -5,3 +5,5 @@ const kRecent=Text('Recently Viewed',style: TextStyle(color: Colors.black,fontWe
 List<String> sizeList=['L', 'XL', 'XXL', 'XXXL'];
 List<String> colors=['Black','Purple','Green'];
 List<String> quantity=['1','2','3'];
+
+String rs='₹';

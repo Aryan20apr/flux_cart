@@ -5,6 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flux_cart/constants.dart';
 import 'package:flux_cart/widgetComponents/horizontal_list_view.dart';
 import 'package:flux_cart/widgetComponents/products.dart';
+import 'package:flux_cart/screens/shopping_cart.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   static String id='home_screen';
@@ -75,7 +76,10 @@ class _HomePageState extends State<HomePage> {
             // color: Colors.white,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //Navigator.push(context, MaterialPageRoute(builder:(context)=>Cart()))
+              Navigator.pushNamed(context, Cart.id);
+            },
             icon: Icon(Icons.shopping_cart),
             // color: Colors.white,
           )
