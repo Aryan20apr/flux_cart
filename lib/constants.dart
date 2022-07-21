@@ -7,3 +7,5 @@ List<String> colors=['Black','Purple','Green'];
 List<String> quantity=['1','2','3'];
 
 String rs='₹';
+
+const double defaultPadding=16.0;

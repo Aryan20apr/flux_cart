@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flux_cart/login/login_screen.dart';
 import 'package:flux_cart/screens/product_details.dart';
+import 'package:flux_cart/welcome/welcome_screen.dart';
 import 'screens/home_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:flux_cart/screens/shopping_cart.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flux_cart/login/login_screen.dart';
+import 'package:flux_cart/welcome/welcome_screen.dart';
+void main() async
+{
 
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final ThemeData theme = ThemeData();
@@ -26,11 +33,13 @@ void main() {
     ),
 
     debugShowCheckedModeBanner: false, //Hides the debug banner in top right
-    initialRoute: HomePage.id,
+    initialRoute: WelcomeScreen.id,
     routes: {
-      HomePage.id:(context)=>const HomePage(),
+      HomePage.id:(context)=>const Login(),
+      Login.id:(context)=>const Login(),
       //ProductDetails.id:(context)=> ProductDetails(),
-      Cart.id:(context)=>Cart()
+      Cart.id:(context)=>Cart(),
+      WelcomeScreen.id:(context)=>const WelcomeScreen(),
   },
   ),
   );

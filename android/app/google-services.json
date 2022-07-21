@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1030916879470",
+    "project_id": "flux-cart-20aaf",
+    "storage_bucket": "flux-cart-20aaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030916879470:android:2325a0c2e1157da519a27f",
+        "android_client_info": {
+          "package_name": "com.aryan.flux_cart.flux_cart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030916879470-1e0rcqouj8sa5di99k3e05n8c9eherkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aryan.flux_cart.flux_cart",
+            "certificate_hash": "36d8dff6cd9d866aceb67349efe62be75b5f8469"
+          }
+        },
+        {
+          "client_id": "1030916879470-1d6jj0lm1ok6oggne1mr8hg43gqj7g5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBiGBBA3msxSx5bt-nGIeKKPOThW6s8c4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030916879470-1d6jj0lm1ok6oggne1mr8hg43gqj7g5o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
