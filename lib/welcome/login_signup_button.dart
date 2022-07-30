@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flux_cart/login/login_screen.dart';
+import 'package:flux_cart/signup/signup_ui.dart';
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
     Key? key,
@@ -33,7 +34,7 @@ class LoginAndSignupBtn extends StatelessWidget {
         const SizedBox(height: 16),
         ElevatedButton(
           onPressed: () {
-            Navigator.popAndPushNamed(context,Login.id);
+            Navigator.popAndPushNamed(context,SignUp.id);
           },
           style: ButtonStyle(shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(

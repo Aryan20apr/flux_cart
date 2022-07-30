@@ -8,6 +8,7 @@ import 'package:flux_cart/screens/shopping_cart.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flux_cart/login/login_screen.dart';
 import 'package:flux_cart/welcome/welcome_screen.dart';
+import 'signup/signup_ui.dart';
 void main() async
 {
 
@@ -40,6 +41,7 @@ void main() async
       //ProductDetails.id:(context)=> ProductDetails(),
       Cart.id:(context)=>Cart(),
       WelcomeScreen.id:(context)=>const WelcomeScreen(),
+      SignUp.id:(context)=>const SignUp()
   },
   ),
   );
