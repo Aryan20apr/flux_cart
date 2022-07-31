@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
             DrawerOptions(name: 'Categories', icon: Icons.category),
             DrawerOptions(name: 'Wishlist', icon: Icons.favorite),
             DrawerOptions(name: 'My Orders', icon: Icons.shopping_bag),
+            DrawerOptions(name: 'Logout', icon: Icons.logout),
             Divider(
               thickness: 2.0,
               // color: Colors.white,
