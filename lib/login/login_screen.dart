@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
             }
         );
       }
-    preferences = await SharedPreferences.getInstance();
+    //preferences = await SharedPreferences.getInstance();
     isLoggedIn = await googleSignIn.isSignedIn(); //Check if user is signed in
 
     if (isLoggedIn) {
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
   }
 
   Future signInWithGoogle() async {
-    preferences = await SharedPreferences.getInstance();
+    //preferences = await SharedPreferences.getInstance();
     setState(() {
       loading = true;
     });
@@ -95,15 +95,15 @@ class _LoginState extends State<Login> {
             "phNo": user?.phoneNumber,
             "email": user?.email,
           });
-          await preferences.setString('id', user!.uid);
+         /* await preferences.setString('id', user!.uid);
           await preferences.setString('userName', user!.displayName ?? ' ');
           await preferences.setString('photoUrl', user!.photoURL ?? ' ');
-          await preferences.setString('email', user!.email ?? '');
+          await preferences.setString('email', user!.email ?? '');*/
         } else {
-          await preferences.setString('id', docs[0]['id']);
+          /*await preferences.setString('id', docs[0]['id']);
           await preferences.setString('userName', docs[0]['username']);
           await preferences.setString('photoUrl', docs[0]['photoUrl']);
-          await preferences.setString('email', docs[0]['email']);
+          await preferences.setString('email', docs[0]['email']);*/
         }
         Navigator.popAndPushNamed(context, HomePage.id);
         setState(() {

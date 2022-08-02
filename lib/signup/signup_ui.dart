@@ -416,11 +416,15 @@ class _SignUpState extends State<SignUp> {
         } else if (e.code == 'email-already-in-use') {
           print('The account already exists for that email');
         }
+        else
+          {
+            print('Error in auth is $e');
+          }
       } catch (e) {
-        print(e);
+        print('Error is $e');
       }
 
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+       //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
       //}
     }
   }

@@ -6,6 +6,7 @@ import 'package:flux_cart/constants.dart';
 import 'package:flux_cart/widgetComponents/horizontal_list_view.dart';
 import 'package:flux_cart/widgetComponents/products.dart';
 import 'package:flux_cart/screens/shopping_cart.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   static String id='home_screen';
@@ -105,7 +106,10 @@ class _HomePageState extends State<HomePage> {
             DrawerOptions(name: 'Categories', icon: Icons.category),
             DrawerOptions(name: 'Wishlist', icon: Icons.favorite),
             DrawerOptions(name: 'My Orders', icon: Icons.shopping_bag),
-            DrawerOptions(name: 'Logout', icon: Icons.logout),
+            DrawerOptions(name: 'Logout', icon: Icons.logout,onTap:()
+            {
+
+            }),
             Divider(
               thickness: 2.0,
               // color: Colors.white,
